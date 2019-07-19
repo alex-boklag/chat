@@ -1,4 +1,4 @@
 # Chat
 
-### Front-End: React, Redux, Redux-Saga, React-Router.
-### Back-End: Node, Express.
+### Client: React, Redux, Redux-Saga, React-Router.
+### Server: Node, Express.
