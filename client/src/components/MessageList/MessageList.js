@@ -7,7 +7,7 @@ const MessageList = (props) => {
         <div className="message-list">
             {
                 props.listOfMessages.map(curMessage => {
-                    const { id, user, avatar, created_at, message, marked_read, className } = curMessage;
+                    const { id, user, avatar, created_at, message, marked_read, likes, className } = curMessage;
                     return (
                         <Message
                             key={id}
@@ -17,7 +17,9 @@ const MessageList = (props) => {
                             created_at={created_at}
                             message={message}
                             marked_read={marked_read}
+                            likes={likes}
                             className={className || 'left'}
+                            onLike={props.onLike}
                             onEdit={props.onEdit}
                             onDelete={props.onDelete}
                         />

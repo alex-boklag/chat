@@ -1,7 +1,7 @@
 import axios from 'axios';
 import api from '../../shared/config/api.json';
 import { call, put, takeEvery, all } from 'redux-saga/effects';
-import { ADD_MESSAGE, EDIT_MESSAGE, DELETE_MESSAGE, FETCH_MESSAGES } from "./actionTypes";
+import { LIKE_MESSAGE, ADD_MESSAGE, EDIT_MESSAGE, DELETE_MESSAGE, FETCH_MESSAGES } from "./actionTypes";
 
 export function* fetchMessages() {
     try {
@@ -15,6 +15,20 @@ function* watchFetchMessages() {
     yield takeEvery(FETCH_MESSAGES, fetchMessages);
 }
 
+export function* likeMessage(action) {
+    const id = action.payload.id;
+    
+    try {
+        yield call(axios.put, `${api.url}/likes/${id}`);
+        yield put({ type: FETCH_MESSAGES });
+    } catch (error) {
+        console.error('likeMessage error:', error.message);
+    }
+}
+function* watchLikeMessage() {
+    yield takeEvery(LIKE_MESSAGE, likeMessage);
+}
+
 export function* addMessage(action) {
     const date = new Date();
     const time =
@@ -26,6 +40,7 @@ export function* addMessage(action) {
         created_at: time,
         message: action.payload.data,
         marked_read: false,
+        likes: 0,
         className: 'right'
     };
     try {
@@ -72,6 +87,7 @@ function* watchDeleteMessage() {
 
 export default function* messagesSagas() {
     yield all([
+        watchLikeMessage(),
         watchFetchMessages(),
         watchAddMessage(),
         watchEditMessage(),

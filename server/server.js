@@ -106,6 +106,21 @@ app.get('/messages', (req, res) => {
   res.sendFile(path.join(__dirname, 'listOfMessages.json'));
 });
 
+app.put('/likes/:id', (req, res) => {
+  const data = req.body;
+  if (isFinite(req.params.id) && data) {
+    let allMessages = fs.readFileSync("listOfMessages.json");
+    allMessages = JSON.parse(allMessages);
+    allMessages.forEach((curMessage) => {
+      if (curMessage.id === req.params.id) {
+        curMessage.likes += 1;
+        fs.writeFileSync("listOfMessages.json", JSON.stringify(allMessages));
+        res.send('The message was edited.');
+      }
+    });
+  }
+});
+
 app.post('/message', (req, res) => {
   let newMessage = req.body;
   if (newMessage) {
