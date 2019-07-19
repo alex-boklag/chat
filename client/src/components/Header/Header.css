@@ -1,0 +1,19 @@
+.header {
+    border: 2px solid rgb(26, 67, 126);
+    font-size: 25px;
+    height: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 10px 0;
+    border-radius: 10px;    
+    color: rgb(26, 67, 126);
+}
+
+.header span {
+    margin: 0 15px 0 15px;
+}
+
+.header span:last-child {
+    margin-left: auto;
+}

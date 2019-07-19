@@ -1,0 +1,8 @@
+.message-list{
+    border: 2px solid rgb(26, 67, 126);
+    height: calc(100vh - 200px);
+    overflow: auto;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}

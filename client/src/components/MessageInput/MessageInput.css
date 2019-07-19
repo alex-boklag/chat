@@ -1,0 +1,34 @@
+@import url(https://fonts.googleapis.com/css?family=Didact+Gothic|Comfortaa:400,700&subset=latin,cyrillic);
+
+.message-input {
+    height: 100px;
+    margin: 10px 0;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-input .text-message {
+    font-family: 'Comfortaa', serif;
+    border: 2px solid rgb(26, 67, 126);
+    border-radius: 10px;
+    height: 80px;
+    width: 400px;
+    margin-right: 20px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.message-input .submit-message {
+    font-family: 'Comfortaa', serif;
+    border-radius: 10px;
+    padding: 15px;
+    width: 150px;
+    font-size: 20px;
+}
+
+.message-input button:hover {
+    background-color: rgb(40, 99, 180);
+    cursor: pointer;
+}
